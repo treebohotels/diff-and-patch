@@ -35,7 +35,7 @@ class BaseDiffItem(object):
         :param action: Patch Behaviour object
         :return:
         """
-        from b2b.domain.services.diffing.patch_behaviours import BaseBehaviour
+        from diff.patch_behaviours import BaseBehaviour
 
         assert BaseBehaviour in type(action).mro()
 

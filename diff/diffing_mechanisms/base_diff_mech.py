@@ -2,7 +2,7 @@
 import abc
 import logging
 
-from b2b.domain.services.diffing.diffing_mechanisms import DiffSet
+from diff.diffing_mechanisms import DiffSet
 
 
 class BaseDiffMech(object):

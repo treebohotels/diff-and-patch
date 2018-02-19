@@ -15,7 +15,7 @@ class Patcher(object):
         :param behaviour_cls: class wanting to register with the patch-behaviour kit
         :return:
         """
-        from b2b.domain.services.diffing.patch_behaviours.base_patch_behaviour import BasePatchBehaviour
+        from diff.patch_behaviours.base_patch_behaviour import BasePatchBehaviour
         assert BasePatchBehaviour in behaviour_cls.mro()
 
         cls._behaviours_registry[behaviour_cls.name()] = behaviour_cls

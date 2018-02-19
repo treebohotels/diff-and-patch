@@ -19,7 +19,7 @@ class BasePatchBehaviour(object):
         self._behaviour_registry = {}
 
         for behaviour_cls in behaviours:
-            from b2b.domain.services.diffing.patch_behaviours import BaseBehaviour
+            from diff.patch_behaviours import BaseBehaviour
             assert BaseBehaviour in behaviour_cls.mro()
 
             associated_diff_type = behaviour_cls.associated_diff_type()
@@ -47,7 +47,7 @@ class BasePatchBehaviour(object):
             return self._behaviour_registry[diff_type]()
 
         except KeyError:
-            from b2b.domain.services.diffing.patch_behaviours import NoOPBehaviour
+            from diff.patch_behaviours import NoOPBehaviour
 
             return NoOPBehaviour()
 

@@ -37,7 +37,7 @@ class BaseBehaviour(object):
         :param diff_item: DiffItem
         :return:
         """
-        from b2b.domain.services.diffing.diffing_mechanisms import BaseDiffItem
+        from diff.diffing_mechanisms import BaseDiffItem
         assert BaseDiffItem in type(diff_item).mro()
 
     def __repr__(self):
