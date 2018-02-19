@@ -13,7 +13,7 @@ def get_version():
 
 
 setup(
-    name='tark',
+    name='diff-and-patch',
     version=get_version(),
     packages=find_packages(exclude=['tests', 'samples']),
     install_requires=[
