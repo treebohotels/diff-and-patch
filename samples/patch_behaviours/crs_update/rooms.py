@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-from b2b.domain.services.diffing import DiffConsts
-from b2b.domain.services.diffing.patch_behaviours import BaseBehaviour
+from samples.constants import DiffConsts
+from diff import BaseBehaviour
 
 
 class RoomsPatch(BaseBehaviour):

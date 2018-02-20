@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
-from dates import DatesPatch
-from guest_details import GuestDetailsPatch
-from occupancy import OccupancyPatch
-from payments import PaymentsPatch
-from rooms import RoomsPatch
-from soft_block import SoftBlockPatch
-from booking_status import BookingStatusPatch
-from b2b.domain.services.diffing import DiffConsts
-from b2b.domain.services.diffing import Patcher
-from b2b.domain.services.diffing.patch_behaviours import BasePatchBehaviour
+from samples.patch_behaviours.crs_update.dates import DatesPatch
+from samples.patch_behaviours.crs_update.guest_details import GuestDetailsPatch
+from samples.patch_behaviours.crs_update.occupancy import OccupancyPatch
+from samples.patch_behaviours.crs_update.payments import PaymentsPatch
+from samples.patch_behaviours.crs_update.rooms import RoomsPatch
+from samples.patch_behaviours.crs_update.soft_block import SoftBlockPatch
+from samples.patch_behaviours.crs_update.booking_status import BookingStatusPatch
+from samples.constants import DiffConsts
+from diff import Patcher
+from diff import BasePatchBehaviour
 
 
 @Patcher.register_behaviour

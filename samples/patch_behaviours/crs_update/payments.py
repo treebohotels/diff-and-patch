@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-from b2b.domain.services.diffing import DiffConsts
-from b2b.domain.services.diffing.patch_behaviours import BaseBehaviour
-import logging
 from b2b.models import Booking
 from b2b.consumer.crs.crs_order import get_b2b_order
 from b2b.constants import BookingAttributes
+from samples.constants import DiffConsts
+from diff import BaseBehaviour
+import logging
 
 
 class PaymentsPatch(BaseBehaviour):
@@ -54,16 +54,16 @@ class PaymentsPatch(BaseBehaviour):
         with crs_txn_mgr:
             crs_txn_mgr.update_pre_tax(b2b_order, bookedroom_map)
             if parent_booking.total_payment() != updated_booking.total_payment() or (
-                            parent_booking.is_soft_booking() and not updated_booking.is_soft_booking() and updated_booking.is_btc_booking()):
+                            parent_booking.is_soft_booking() and not updated_booking.is_soft_booking()
+                            and updated_booking.is_btc_booking()):
                 crs_txn_mgr.update_payment(b2b_order)
             if parent_booking.get_booking_source() != updated_booking.get_booking_source():
                 crs_txn_mgr.get_hotel_data()
                 crs_txn_mgr.update_source(b2b_order)
 
         if parent_booking.payment_type() != updated_booking.payment_type() or (
-                        parent_booking.is_soft_booking() and not updated_booking.is_soft_booking() and updated_booking.is_btc_booking()):
+                        parent_booking.is_soft_booking() and not updated_booking.is_soft_booking()
+                        and updated_booking.is_btc_booking()):
             crs_txn_mgr.update_payterm(b2b_order)
             if not updated_booking.is_payment_processed():
                 updated_booking.set_attribute(BookingAttributes.PAYMENT_PROCESSED, True)
-
-

@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
-from dates import DatesDiff
-from guest_details import GuestDetailsDiff
-from occupancy import OccupancyDiff
-from payments import PaymentsDiff
-from rooms import RoomsDiff
-from soft_block import SoftBlockDiff
-from booking_status import BookingStatusDiff
-from b2b.domain.services.diffing.diffing_mechanisms import BaseDiffMech
-from b2b.domain.services.diffing import DiffConsts
-from b2b.domain.services.diffing import Differ
+from samples.diffing_mechanisms.booking_diff.dates import DatesDiff
+from samples.diffing_mechanisms.booking_diff.guest_details import GuestDetailsDiff
+from samples.diffing_mechanisms.booking_diff.occupancy import OccupancyDiff
+from samples.diffing_mechanisms.booking_diff.payments import PaymentsDiff
+from samples.diffing_mechanisms.booking_diff.rooms import RoomsDiff
+from samples.diffing_mechanisms.booking_diff.soft_block import SoftBlockDiff
+from samples.diffing_mechanisms.booking_diff.booking_status import BookingStatusDiff
+from diff import BaseDiffMech
+from samples.constants import DiffConsts
+from diff import Differ
 
 
 @Differ.register_diff_mech

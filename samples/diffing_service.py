@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
-from .constants import DiffConsts
+from samples.constants import DiffConsts
 from diff.differ import Differ
 from diff.patcher import Patcher
 from diff.exceptions import NoDifferenceDetected
-from .exceptions import CrsUpdateBookingFailed
+from samples.exceptions import CrsUpdateBookingFailed
 
 
 class DiffingService(object):

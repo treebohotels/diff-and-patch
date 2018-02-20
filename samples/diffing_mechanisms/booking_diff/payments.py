@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-from b2b.domain.services.diffing import DiffConsts
-from b2b.domain.services.diffing.diffing_mechanisms import BaseDiffItem
 from b2b.models import Booking
+from samples.constants import DiffConsts
+from diff import BaseDiffItem
 
 
 class PaymentsDiff(BaseDiffItem):

@@ -2,9 +2,9 @@
 import logging
 
 from b2b.consumer.crs.crs_order import get_b2b_order
-from b2b.domain.services.diffing import DiffConsts
-from b2b.domain.services.diffing.patch_behaviours import BaseBehaviour
 from b2b.models import Booking
+from samples.constants import DiffConsts
+from diff import BaseBehaviour
 
 
 class DatesPatch(BaseBehaviour):

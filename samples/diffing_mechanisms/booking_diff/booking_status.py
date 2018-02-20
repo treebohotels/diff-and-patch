@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
-from b2b.domain.services.diffing import DiffConsts
-from b2b.domain.services.diffing.diffing_mechanisms import BaseDiffItem
 from b2b.models import Booking
-from b2b import constants
+from samples.constants import DiffConsts
+from diff import BaseDiffItem
 
 
 class BookingStatusDiff(BaseDiffItem):
@@ -28,4 +27,3 @@ class BookingStatusDiff(BaseDiffItem):
         assert type(rhs) is Booking
 
         return False
-

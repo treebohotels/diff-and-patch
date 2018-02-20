@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
-from b2b.domain.services.diffing import DiffConsts
-from b2b.domain.services.diffing.patch_behaviours import BaseBehaviour
-import logging
 from b2b.models import Booking
 from b2b.consumer.crs.crs_order import get_b2b_order
+from samples.constants import DiffConsts
+from diff import BaseBehaviour
+import logging
 
 
 class OccupancyPatch(BaseBehaviour):

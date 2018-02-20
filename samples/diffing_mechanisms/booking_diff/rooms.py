@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-from b2b.domain.services.diffing import DiffConsts
-from b2b.domain.services.diffing.diffing_mechanisms import BaseDiffItem
+from samples.constants import DiffConsts
+from diff import BaseDiffItem
 
 
 class RoomsDiff(BaseDiffItem):
@@ -18,4 +18,3 @@ class RoomsDiff(BaseDiffItem):
     @classmethod
     def is_applicable(cls, lhs, rhs):
         return False
-

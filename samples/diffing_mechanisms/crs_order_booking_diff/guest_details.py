@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
-from b2b.domain.services.diffing import DiffConsts
-from b2b.domain.services.diffing.diffing_mechanisms import BaseDiffItem
 from b2b.models import Booking
 from b2b.consumer.crs.crs_order import CRSBookingOrderInterface
 from b2b.domain.utils.misc import full_name
+from samples.constants import DiffConsts
+from diff import BaseDiffItem
+
 
 class GuestDetailsDiff(BaseDiffItem):
     """
@@ -60,8 +61,7 @@ class GuestDetailsDiff(BaseDiffItem):
                     "gender": guest_details['gender']
                 }
             else:
-                additional_guest_details.append(
-                {
+                additional_guest_details.append({
                     "name": full_name(guest_details["first_name"], guest_details["last_name"]),
                     "email": guest_details['email'],
                     "phone": guest_details['phone'],
