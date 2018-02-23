@@ -19,7 +19,7 @@ class BaseDiffMech(object):
         self._diff_item_registry = {}
 
         for diff_item_cls in diff_items:
-            from b2b.domain.services.diffing.diffing_mechanisms import BaseDiffItem
+            from diff import BaseDiffItem
             assert BaseDiffItem in diff_item_cls.mro()
 
             diff_item_type = diff_item_cls.diff_type()
@@ -68,5 +68,3 @@ class BaseDiffMech(object):
             diff_set.add(diff_item_cls(lhs, rhs))
 
         return diff_set
-
-
