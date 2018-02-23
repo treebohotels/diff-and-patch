@@ -1,7 +1,7 @@
 from diff.differ import Differ
 from diff.patcher import Patcher
 from diff import BaseDiffItem
-from diff import BaseDiffMech
+from diff import BaseDiffStrategy
 from diff.patch_behaviours import BaseBehaviour, BasePatchBehaviour
 
 
@@ -27,8 +27,8 @@ class NameDiff(BaseDiffItem):
         return True
 
 
-@Differ.register_diff_mech
-class UserDiffMech(BaseDiffMech):
+@Differ.register_strategy
+class UserDiffMech(BaseDiffStrategy):
     def __init__(self):
         super(UserDiffMech, self).__init__(diff_items=[
             NameDiff
@@ -80,7 +80,7 @@ class UserPatch(BasePatchBehaviour):
 
 
 def diff_users(user1, user2):
-    diff_mech = Differ.get_diff_mech(1)
+    diff_mech = Differ.get_strategy(1)
     diff = diff_mech.diff(user1, user2)
 
     user_patcher = Patcher.get_behaviour(1)
