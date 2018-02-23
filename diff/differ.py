@@ -10,12 +10,12 @@ class Differ(object):
     _diff_mech_registry = {}
 
     @classmethod
-    def register_diff_mech(cls, diff_mech_cls):
+    def register_strategy(cls, diff_mech_cls):
         """
         decorator for registering diff-mech kits
         """
-        from diff.diffing_mechanisms import BaseDiffMech
-        assert BaseDiffMech in diff_mech_cls.mro()
+        from diff.diff_strategy import BaseDiffStrategy
+        assert BaseDiffStrategy in diff_mech_cls.mro()
 
         diff_mech_name = diff_mech_cls.name()
         cls._diff_mech_registry[diff_mech_name] = diff_mech_cls
@@ -23,7 +23,7 @@ class Differ(object):
         return diff_mech_cls
 
     @classmethod
-    def get_diff_mech(cls, diff_mech):
+    def get_strategy(cls, diff_mech):
         """
         get specified diffing mechanism
         :param diff_mech: name of the diffing mechanism (one of DiffConsts.DiffingMechanisms enum)

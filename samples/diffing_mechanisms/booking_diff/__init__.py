@@ -6,13 +6,13 @@ from samples.diffing_mechanisms.booking_diff.payments import PaymentsDiff
 from samples.diffing_mechanisms.booking_diff.rooms import RoomsDiff
 from samples.diffing_mechanisms.booking_diff.soft_block import SoftBlockDiff
 from samples.diffing_mechanisms.booking_diff.booking_status import BookingStatusDiff
-from diff import BaseDiffMech
+from diff import BaseDiffStrategy
 from samples.constants import DiffConsts
 from diff import Differ
 
 
-@Differ.register_diff_mech
-class BookingDiffMech(BaseDiffMech):
+@Differ.register_strategy
+class BookingDiffMech(BaseDiffStrategy):
     """
     collects DiffItems for diffing two bookings
     """
@@ -29,4 +29,4 @@ class BookingDiffMech(BaseDiffMech):
 
     @classmethod
     def name(cls):
-        return DiffConsts.DiffingMechanisms.BookingDiffMech
+        return DiffConsts.DiffingStrategy.BookingDiffMech

@@ -2,10 +2,10 @@
 import abc
 import logging
 
-from diff.diffing_mechanisms import DiffSet
+from diff.diff_strategy import DiffSet
 
 
-class BaseDiffMech(object):
+class BaseDiffStrategy(object):
     """
     base class for all diffing mechanisms
     """
@@ -42,14 +42,12 @@ class BaseDiffMech(object):
         """
         return "unknown"
 
-    def diff(self, lhs, rhs,  *args, **kwargs):
+    def diff(self, lhs, rhs):
         """
         orchestrates the diffing mechanism
 
         :param lhs: left-hand-side of the diff
         :param rhs: right-hand-side of the diff
-        :param args:
-        :param kwargs:
         :return: DiffSet (lhs - rhs)
         """
         logger = logging.getLogger(self.__class__.__name__)

@@ -79,48 +79,6 @@ class DiffingService(object):
             raise CrsUpdateBookingFailed(old_booking=old_booking.booking_id, updated_booking=new_booking.booking_id)
 
     @classmethod
-    def manual_steps(cls, old_booking, new_booking):
-        """
-        Returns manual steps to take in case of update failure.
-        Args:
-            old_booking:
-            new_booking:
-
-        Returns:
-
-        """
-        # diff the bookings
-        diff_set = DiffingService.diff_bookings(old_booking, new_booking)
-
-        manual_override_steps_behaviour = Patcher.get_behaviour(DiffConsts.PatchBehaviours.ManualOverrideSteps)
-        diff_set.attach_behaviour(patch_behaviour_kit=manual_override_steps_behaviour)
-
-        # then execute the actions, and collect the result
-        manual_steps = diff_set.execute(remove_on_success=True)
-        return manual_steps.values()
-
-    @classmethod
-    def backsync_booking(cls, booking, crs_order):
-        """
-        back sync booking data/details from its current state in underlying CRS
-        :param booking: which booking to back sync
-        :param crs_order: the crs order object
-        """
-        # get the diffing mechanism
-        diff_set = DiffingService.diff_booking_and_crs_order(booking, crs_order)
-
-        # apply SelfUpdate patch behaviour to the diff-set
-        self_update_behaviour = Patcher.get_behaviour(DiffConsts.PatchBehaviours.SelfUpdate)
-        diff_set.attach_behaviour(patch_behaviour_kit=self_update_behaviour)
-
-        # finally execute the actions on the diff-items
-        diff_set.execute(remove_on_success=True)
-
-        if not diff_set.is_empty():
-            # todo: what do we do if not all diff-items in diff-set executed successfully?
-            raise RuntimeError("Some steps failed while back syncing booking {bid}".format(bid=booking.booking_id))
-
-    @classmethod
     def diff_bookings(cls, b1, b2):
         """
         diffs two bookings
@@ -131,19 +89,5 @@ class DiffingService(object):
         :param b2: new Booking object
         :return: DiffSet (b1-b2)
         """
-        diff_mech = Differ.get_diff_mech(DiffConsts.DiffingMechanisms.BookingDiffMech)
+        diff_mech = Differ.get_strategy(DiffConsts.DiffingStrategy.BookingDiffMech)
         return diff_mech.diff(b1, b2)
-
-    @classmethod
-    def diff_booking_and_crs_order(cls, booking, crs_order):
-        """
-        diffs a booking and crs-order-details
-        returns a DiffSet containing DiffItems that detail what's missing in the
-        booking compared to the crs order
-
-        :param booking: Booking model object
-        :param crs_order: CRSOrder object
-        :return: DiffSet (what's missing in the booking compared to the crs-order)
-        """
-        diff_mech = Differ.get_diff_mech(DiffConsts.DiffingMechanisms.CRSOrderBookingDiffMech)
-        return diff_mech.diff(booking, crs_order)

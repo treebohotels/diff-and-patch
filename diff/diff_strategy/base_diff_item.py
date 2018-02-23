@@ -69,7 +69,7 @@ class BaseDiffItem(object):
 
     @classmethod
     @abc.abstractmethod
-    def diff_mech(cls):
+    def diff_strategy(cls):
         """
         :return: name of the diffing mechanism kit this diff-item belongs in
         """

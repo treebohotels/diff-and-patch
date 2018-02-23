@@ -9,8 +9,8 @@ class BookingStatusDiff(BaseDiffItem):
     reprensets soft block expiry diff in two bookings
     """
     @classmethod
-    def diff_mech(cls):
-        return DiffConsts.DiffingMechanisms.BookingStatusDiff
+    def diff_strategy(cls):
+        return DiffConsts.DiffingStrategy.BookingStatusDiff
 
     @classmethod
     def diff_type(cls):
