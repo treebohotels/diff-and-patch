@@ -37,7 +37,7 @@ class BaseBehaviour(object):
         :param diff_item: DiffItem
         :return:
         """
-        from diff.diffing_mechanisms import BaseDiffItem
+        from diff.diff_strategy import BaseDiffItem
         assert BaseDiffItem in type(diff_item).mro()
 
     def __repr__(self):

@@ -8,22 +8,17 @@ class DiffConsts(object):
     collection of all constants for the diffing subsystem
     """
     class DiffTypes(Enum):
-        DatesDiff = 1
-        GuestDetailsDiff = 2
-        OccupancyDiff = 3
-        PaymentsDiff = 4
-        RoomsDiff = 5
-        SoftBlockDiff = 6
-        BookingStatusDiff = 7
+        BrandDiff = 8
+        ModelDiff = 9
+        MakeDiff = 10
+        VariantDiff = 11
 
-    class DiffingMechanisms(Enum):
+    class DiffingStrategy(Enum):
         DiffingMechanisms = 1
         BookingDiffMech = 2
-        CRSOrderBookingDiffMech = 3
+        CarDiff = 3
 
     class PatchBehaviours(Enum):
         PatchBehaviours = 1
         CRSUpdate = 2
-        ManualOverrideSteps = 3
-        SelfUpdate = 4
-        AuditTrail = 5
+        AuditTrail = 3

@@ -2,10 +2,10 @@
 import abc
 import logging
 
-from diff.diffing_mechanisms import DiffSet
+from diff.diff_strategy import DiffSet
 
 
-class BaseDiffMech(object):
+class BaseDiffStrategy(object):
     """
     base class for all diffing mechanisms
     """
@@ -19,7 +19,7 @@ class BaseDiffMech(object):
         self._diff_item_registry = {}
 
         for diff_item_cls in diff_items:
-            from b2b.domain.services.diffing.diffing_mechanisms import BaseDiffItem
+            from diff import BaseDiffItem
             assert BaseDiffItem in diff_item_cls.mro()
 
             diff_item_type = diff_item_cls.diff_type()
@@ -42,14 +42,12 @@ class BaseDiffMech(object):
         """
         return "unknown"
 
-    def diff(self, lhs, rhs,  *args, **kwargs):
+    def diff(self, lhs, rhs):
         """
         orchestrates the diffing mechanism
 
         :param lhs: left-hand-side of the diff
         :param rhs: right-hand-side of the diff
-        :param args:
-        :param kwargs:
         :return: DiffSet (lhs - rhs)
         """
         logger = logging.getLogger(self.__class__.__name__)
@@ -68,5 +66,3 @@ class BaseDiffMech(object):
             diff_set.add(diff_item_cls(lhs, rhs))
 
         return diff_set
-
-

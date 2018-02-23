@@ -10,8 +10,8 @@ class PaymentsDiff(BaseDiffItem):
     """
 
     @classmethod
-    def diff_mech(cls):
-        return DiffConsts.DiffingMechanisms.BookingDiffMech
+    def diff_strategy(cls):
+        return DiffConsts.DiffingStrategy.BookingDiffMech
 
     @classmethod
     def diff_type(cls):
