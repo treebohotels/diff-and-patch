@@ -2,7 +2,7 @@
 import logging
 from collections import OrderedDict
 
-from .base_diff_item import BaseDiffItem
+from diff.diff_strategy.base_diff_item import BaseDiffItem
 
 
 class DiffSet(object):
