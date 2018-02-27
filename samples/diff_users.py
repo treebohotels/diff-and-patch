@@ -5,6 +5,13 @@ from diff import BaseDiffStrategy
 from diff.patch_behaviours import BaseBehaviour, BasePatchBehaviour
 
 
+USER_AGE_DIFF_STRATEGY = 1
+USER_AGE_PATCH_STRATEGY = 2
+
+NUMBER_DIFF_TYPE = 3
+
+USER_DIFF_STRATEGY = 4
+
 class User:
     def __init__(self, name, age):
         self.name = name
@@ -14,11 +21,11 @@ class User:
 class NameDiff(BaseDiffItem):
     @classmethod
     def diff_strategy(cls):
-        return 1
+        return USER_AGE_DIFF_STRATEGY
 
     @classmethod
     def diff_type(cls):
-        return 1
+        return NUMBER_DIFF_TYPE
 
     @classmethod
     def is_applicable(cls, lhs, rhs):
@@ -36,18 +43,18 @@ class UserDiffStrategy(BaseDiffStrategy):
 
     @classmethod
     def name(cls):
-        return 1
+        return USER_DIFF_STRATEGY
 
 
 class UserNamePatch(BaseBehaviour):
 
     @classmethod
     def behaviour_kit(cls):
-        return 1
+        return USER_AGE_PATCH_STRATEGY
 
     @classmethod
     def associated_diff_type(cls):
-        return 1
+        return NUMBER_DIFF_TYPE
 
     def execute(self, diff_item, *args, **kwargs):
         super(UserNamePatch, self).execute(diff_item, *args, **kwargs)
@@ -73,14 +80,14 @@ class UserPatch(BasePatchBehaviour):
 
     @classmethod
     def name(cls):
-        return 1
+        return USER_AGE_PATCH_STRATEGY
 
 
 def diff_users(user1, user2):
-    diff_strategy = Differ.get_strategy(1)
+    diff_strategy = Differ.get_strategy(USER_DIFF_STRATEGY)
     diff = diff_strategy.diff(user1, user2)
 
-    user_patcher = Patcher.get_behaviour(1)
+    user_patcher = Patcher.get_behaviour(USER_AGE_PATCH_STRATEGY)
     diff.attach_behaviour(patch_behaviour_kit=user_patcher)
 
     diff.execute()
