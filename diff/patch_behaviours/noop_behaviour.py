@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import logging
 
-from b2b.domain.services.diffing.patch_behaviours import BaseBehaviour
+from diff.patch_behaviours import BaseBehaviour
 
 
 class NoOPBehaviour(BaseBehaviour):

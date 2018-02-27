@@ -2,7 +2,7 @@
 import logging
 from collections import OrderedDict
 
-from base_diff_item import BaseDiffItem
+from diff.diff_strategy.base_diff_item import BaseDiffItem
 
 
 class DiffSet(object):
@@ -46,7 +46,7 @@ class DiffSet(object):
         :return: nothing
         """
         # importing locally to avoid possibility of circular dependency
-        from b2b.domain.services.diffing.patch_behaviours import BaseBehaviour
+        from diff.patch_behaviours import BaseBehaviour
 
         for diff_item in self._diff_items.values():
             action = patch_behaviour_kit[diff_item.diff_type()]
