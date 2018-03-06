@@ -20,6 +20,10 @@ class Car:
         self.make = make
         self.variant = variant
 
+    def __str__(self):
+        return ", ".join(["Brand: " + self.brand, "Model: " + self.model,
+                          "Make: " + self.make, "Variant: " + self.variant])
+
 
 @Differ.register_strategy
 class CarDiffStrategy(BaseDiffStrategy):
@@ -131,11 +135,11 @@ def diff_cars(c1, c2):
 
 def main():
     car_1 = Car('Maruti', 'Swift', '2018', 'ZXi')
-    car_3 = Car('Maruti', 'Swift', '2018', 'ZXi')
     car_2 = Car('Maruti', 'Swift', '2016', 'ZXi')
 
+    print("Car 1 -", car_1)
+    print("Car 2 -", car_2)
     diff_cars(car_1, car_2)
-    diff_cars(car_1, car_3)
 
 
 main()
